@@ -1,0 +1,157 @@
+.card{
+  margin-top: 6%;
+  height: 300px;
+  width: 50%;
+  margin-left: 25%;
+  margin-right: 25%;
+  border: 2px solid #eeeef0;
+}
+.card .card-body{
+  overflow: hidden;
+  margin-bottom: 17px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+.card .card-body .header_row{
+  width: 100%;
+  overflow: hidden;
+}
+.card .card-body .serach{
+  float: right;
+}
+.card .card-body .search_input{
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #b3b3bbfa;
+  background: url('assets/Search_icon.png') no-repeat right 6px top 6px;
+  padding: 4px;
+}
+.card .card-body select{
+  width: 80px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #b3b3bbfa;
+  padding: 1px;
+}
+.card .card-body button{
+  border-radius: 5px;
+  border: 1px solid #22deb3a6;
+  outline: none;
+  background: #22deb3a6;
+  color: #fff;
+  width: 70px;
+}
+.card .email_div{
+  position: relative;
+  margin-top: 90px;
+  left: 20px;
+}
+.card .email_div .email_label{
+    font-weight: normal;
+    font-size: 16px;
+    color: #878787;
+}
+.card .email_div .email_input{
+  background-color: #f2f2f2;
+  border: solid 1px #e4e4e4;
+  padding: 8px;
+  width: 70%;
+  border-radius: 5px;
+  color: #878787;
+  outline: none;
+}
+.card .email_div .btn{
+  position: relative;
+  top: -2px;
+  width: 100px;
+  color: #fff;
+  outline: none;
+  padding: 8px;
+  background: #22deb3a6;
+}
+.card .email_div .error_msg{
+  border: 1px solid #da151547;
+  border-radius: 10px;
+  background: #ff00001c;
+  color: red;
+  text-align: center;
+  position: relative;
+  top: 45px;
+  margin-left: 32%;
+  width: 30%;
+}
+.card .action{
+  padding-right: 10px; 
+}
+.card .row i{
+  cursor: pointer;
+}
+.card .row{
+  border: 2px solid #c0c0ca;
+  padding: 5px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
+.cancel_btn{
+  outline: none;
+  border: none;
+  background: #0000004a;
+  padding: 4px;
+  width: 70px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+.ok_btn{
+  outline: none;
+  border: none;
+  background: #22deb3a6;
+  padding: 4px;
+  width: 70px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+}
+.add_task{
+  cursor: pointer;
+}
+ul{
+  list-style-type: none;
+  margin-left: 20%;
+}
+textarea{
+  resize: none;
+  border: solid 1px #e4e4e4;
+  padding: 8px;
+  width: 70%;
+  border-radius: 5px;
+  outline: none;
+}
+.card .card-body .title_input{
+      border: solid 1px #e4e4e4;
+      padding: 8px;
+      width: 70%;
+      border-radius: 5px;
+      outline: none;
+}
+.card .card-body .clndr{
+  font-size: 25px;
+  padding-left: 10px;
+  color: #22deb3a6;
+}
+button{
+  cursor: pointer;
+}
+.card .card-body .label_margin{
+  margin-top: 20px;
+}
+.card .card-body .btn_div{
+  float: right;
+}
+.error_text{
+  color: red;
+}
+.error_btn{
+  cursor: not-allowed;
+}

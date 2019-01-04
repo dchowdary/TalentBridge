@@ -1,0 +1,88 @@
+<div class="card">
+  <div  class="card-body">
+    <div class="email_div">
+      <label class="email_label">Email Id:</label><br>
+      <input class="email_input" type="text" name="email_value" [(ngModel)]="email_value" [readonly]="btn_flag">
+      <button *ngIf="!btn_flag" class="btn" type="button" name="Submit" (click)="taskSubmit('submit')">Submit</button>
+      <button *ngIf="btn_flag" class="btn" type="button" name="Submit" (click)="taskSubmit('refresh')"><i class="fas fa-undo"></i> Reresh</button>
+      <div class="error_msg" *ngIf="error_flag">Err: Wrong email id provided</div>
+    </div>
+    </div>
+</div>
+<div class="card" *ngIf="!addtask_flag">
+  <div class="card-body">
+    <div class="header_row">
+      <span>Task List</span>
+      <div class="serach">
+        <input class="search_input fab fa-sistrix" type="text">
+        <select>
+          <option>All</option>
+        </select>
+        <button (click)="addTaskList()" ><i class="add_task fas fa-plus-square"></i> Add</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-2">Task List</div>
+      <div class="col-3">Scheduled On</div>
+      <div class="col-3">Created On</div>
+      <div class="col-2">Status</div>
+      <div class="col-2">Action</div>
+    </div>
+    <div class="row" *ngFor="let list of taskListarray; let i = index; trackBy:trackByIndex">
+      <div class="col-2">Task {{i}}</div>
+      <div class="col-3">{{list.scheduledOn}}</div>
+      <div class="col-3">{{list.createdOnDate}}</div>
+      <div class="col-2">{{list.status}}</div>
+      <div class="col-2"><i (click)="viewTask()" class="action far fa-eye"></i><i (click)="deleteTask(taskmodal)" *ngIf="list.status != 'deleted'" class="action fas fa-trash-alt"></i><i (click)="doneTask(taskmodal)" *ngIf="list.status == 'pending'" class="fas fa-check-square"></i></div>
+    </div>
+  </div>
+</div>
+<div class="card" *ngIf="addtask_flag">
+  <div class="card-body">
+    <form #taskForm="ngForm"> 
+    <ul>
+      <li>
+        <label>Title <span [ngClass]="{'error_text':titleTask.invalid && titleTask.touched}">*</span>:</label>
+      </li>
+      <li>
+        <input #titleTask="ngModel" name="title" [(ngModel)]="titleValue" class="title_input" minlength="8" type="text" required><br>
+        <span *ngIf="titleTask.invalid && titleTask.touched" [ngClass]="{'error_text':titleTask.invalid && titleTask.touched}">Err: Please provide proper task title</span>
+      </li>
+      <li class="label_margin"><label>Schedule On <span [ngClass]="{'error_text':dateTask.invalid && dateTask.touched}">*</span>:</label>
+      </li>
+      <li>
+        <input #dateTask="ngModel" name="cal" [(ngModel)]="calValue" class="title_input"  dateFormat="dd-MMM-yyyy" ngbDatepicker #d="ngbDatepicker" type="text"><i  (click)="d.toggle()" class="clndr fas fa-calendar-alt" required></i><br>
+        <span *ngIf="dateTask.invalid && dateTask.touched" [ngClass]="{'error_text':dateTask.invalid && dateTask.touched}">Err: Please Selecte proper date</span>
+      </li>
+      <li class="label_margin"><label>Description <span [ngClass]="{'error_text':textTask.invalid && textTask.touched}">*</span>:</label>
+      </li>
+      <li>
+        <textarea #textTask="ngModel" name="area" [(ngModel)]="textareaValue" rows="2" minlength="20" required></textarea><br>
+        <span *ngIf="textTask.invalid && textTask.touched" [ngClass]="{'error_text':textTask.invalid && textTask.touched}">Err: Please provide minimum 20 Words</span>
+      </li>
+    </ul>
+  </form>
+    <div class="btn_div">
+      <button (click)="updatetask('cancel')">Cancel</button>
+      <button (click)="updatetask('save')" [disabled]="taskForm.invalid" [ngClass]="{'error_btn':taskForm.invalid}">Save</button>
+    </div>
+
+  </div>
+
+</div>
+
+<ng-template #taskmodal let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">{{modalTitle}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>{{modalMsg}}</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="ok_btn" (click)="updatetask(task);c('Save click')">OK</button>
+      <button type="button" class="cancel_btn" (click)="d('Cross click')">Cancel</button>
+    </div>
+</ng-template>
